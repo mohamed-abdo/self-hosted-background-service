@@ -6,13 +6,15 @@ services:
     build:
       context: ./SelfHostedBackgroundService
       dockerfile: Dockerfile
-    ports:
-    - 5100:5100
+    depends_on:
+    - backgroundhostedservices
   backgroundhostedservices:
     image: backgroundhostedservices
     build:
       context: ./BackgroundHostedServices
       dockerfile: Dockerfile
+    depends_on:
+    - messagesquare
     ports:
     - 5101:5123
   messagesquare:
