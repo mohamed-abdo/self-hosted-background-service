@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  selfhostedbackgroundservice:
+    image: selfhostedbackgroundservice
+    build:
+      context: ./SelfHostedBackgroundService
+      dockerfile: Dockerfile
+
+  backgroundhostedservices:
+    image: backgroundhostedservices
+    build:
+      context: ./BackgroundHostedServices
+      dockerfile: Dockerfile
+    ports:
+    - 32123:32754
