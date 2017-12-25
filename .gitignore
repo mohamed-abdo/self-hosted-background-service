@@ -3,3 +3,8 @@
 ################################################################################
 
 /SelfHostedBackgroundService/BackgroundHostedServices/bin/Debug/netcoreapp2.0
+/SelfHostedBackgroundService/BackgroundHostedServices/obj/Debug/netcoreapp2.0
+/SelfHostedBackgroundService/.vs/SelfHostedBackgroundService/v15/Server/sqlite3
+/SelfHostedBackgroundService/obj
+/SelfHostedBackgroundService/SelfHostedBackgroundService/bin/Debug/netcoreapp2.0
+/SelfHostedBackgroundService/SelfHostedBackgroundService/obj/Debug/netcoreapp2.0
