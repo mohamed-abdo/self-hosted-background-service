@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using Newtonsoft.Json;
 using System.Text;
+using Microsoft.Extensions.Logging.Console;
+
 namespace BackgroundHostedServices
 {
     public class Startup
@@ -26,8 +28,12 @@ namespace BackgroundHostedServices
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IHostedService, MessagesServiceHost>();
-
+            services.AddSingleton<IHostedService, MessagesServiceHost>(srv =>
+            {
+            var logger = srv.GetService<ILoggerFactory>();
+                logger.AddConsole((message, logLevel) => logLevel >= LogLevel.Information, true);;
+                return new MessagesServiceHost(logger);
+            });
             return services.BuildServiceProvider();
         }
 
