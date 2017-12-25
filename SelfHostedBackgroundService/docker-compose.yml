@@ -6,11 +6,12 @@ services:
     build:
       context: ./SelfHostedBackgroundService
       dockerfile: Dockerfile
-
+    ports:
+    - 5100:5100
   backgroundhostedservices:
     image: backgroundhostedservices
     build:
       context: ./BackgroundHostedServices
       dockerfile: Dockerfile
     ports:
-    - 32123:32754
+    - 5101:5123

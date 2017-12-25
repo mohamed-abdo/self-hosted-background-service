@@ -28,7 +28,7 @@ namespace BackgroundHostedServices
                 .UseKestrel(options =>
                 {
                    // TODO: support end-point for self checking, monitoring, administration, service / task cancellation.... 
-                   options.Listen(IPAddress.Any, 32754); // docker outer port
+                   options.Listen(IPAddress.Any, 5123); // docker outer port
                 });
 
             var host = builder.Build();

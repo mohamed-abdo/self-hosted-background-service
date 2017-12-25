@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.Text;
 namespace BackgroundHostedServices
 {
@@ -37,22 +37,21 @@ namespace BackgroundHostedServices
 
             var serverAddressesFeature = app.ServerFeatures.Get<IServerAddressesFeature>();
 
-
             app.Run(async (context) =>
             {
-                context.Response.ContentType = "application/json";
+                context.Response.ContentType = "text/html";
                 await context.Response
-                    .WriteAsync(" Hosted by Kestrel");
+                    .WriteAsync("<p> Hosted by Kestrel </p>");
 
                 if (serverAddressesFeature != null)
                 {
                     await context.Response
-                        .WriteAsync("\n Listening on the following addresses: " +
+                        .WriteAsync("<p>Listening on the following addresses: " +
                             string.Join(", ", serverAddressesFeature.Addresses) +
-                            "");
+                            "</p>");
                 }
 
-                await context.Response.WriteAsync($"\n Request URL: {context.Request.GetDisplayUrl()}");
+                await context.Response.WriteAsync($"<p>Request URL: {context.Request.GetDisplayUrl()} </p>");
             });
         }
 
