@@ -11,7 +11,7 @@ using System;
 using Newtonsoft.Json;
 using System.Text;
 using Microsoft.Extensions.Logging.Console;
-
+using RabbitMQ.Client;
 namespace BackgroundHostedServices
 {
     public class Startup
